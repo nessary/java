@@ -1,0 +1,55 @@
+
+
+
+BIO---同步 并且阻塞
+
+NIO(new NO /NOn Blocking IO )同步非阻塞---1.4---1.7
+
+Buffer(双向缓冲区)------Boolean  ByteBuffer (allocate(capactory(1024),  flip()   , clear())，get(),put())
+channel(通道)-----  FileChannel FileInpuStream/FileOutputStream RanndomAccessFile  .getChannel()
+              ---SocketChannel(ServerSocketChannel) --tcp 
+			  ---DataProgramChannel  --udp
+
+
+
+			  
+			  
+			  HeapByteBuffer---
+			  
+			  
+			  DirectByteBuffer----
+			       Unsafe---
+				   Cleaner---  crete()---clean(callback(Sys.exit(1/-1/0)))
+			  
+
+
+AIO(NIO2)---异步IO非阻塞  Paths  Files  ----open(Path(URI),StanOPeration.READ,WRITE,CREATE,CR)
+                      
+
+
+直接内存----（内存映射/page）----硬盘（文件--一次cpoy）-----allocateDirect
+                          
+					                                      .map(READ_ONLY/READ_WRITE/PRIVATE(),postion,size())
+								
+								文件复制
+								
+								
+								
+								
+								  BIO-
+								  
+								  NIO--
+								  
+								   NIO--FileOutputStream.getChannel ---失败
+								   
+								   NIO---open()--------文件已经被复制 交给内存映射文件(c)--java不可控的---
+								          get  put
+								   
+								  
+								  
+								  
+								
+								
+
+								
+
