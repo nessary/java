@@ -32,7 +32,94 @@ public class FileCopy {
 
 
     public static void main(String[] args) throws IOException, IllegalAccessException, InstantiationException, ClassNotFoundException {
-        fileCopyByMemNIO2();
+        zeroCopy();
+
+
+    }
+
+    /**
+     * java层面上的o拷贝
+     */
+
+    public static void zeroCopy() throws IOException {
+        //建议不用这个
+        //        new FileInputStream(new File("C:\\Users\\Ness\\Desktop\\user1.sql")).getChannel();
+
+        try (
+
+                FileChannel read = FileChannel.open(Paths.get("C:\\Users\\Ness\\Desktop\\user.sql"), StandardOpenOption.READ);
+                FileChannel write = FileChannel.open(Paths.get("C:\\Users\\Ness\\Desktop\\user1.sql"), StandardOpenOption.WRITE, StandardOpenOption.CREATE)) {
+
+
+
+
+
+            //堆外内存一次拷贝
+//            MappedByteBuffer readMap = read.map(FileChannel.MapMode.READ_ONLY, 0, read.size());
+//            MappedByteBuffer writeMap = write.map(FileChannel.MapMode.READ_WRITE, 0, read.size());
+//
+//
+//            readMap.get("");
+//
+//            writeMap.put()
+
+            read.transferTo(0, read.size(), write);
+
+
+        }
+
+//        l
+
+    }
+
+
+    /**
+     * 聚集写入(gather)
+     */
+    public static void gatherWrite() throws IOException {
+
+        try (FileChannel writeChannel = new RandomAccessFile("C:\\Users\\Ness\\Desktop\\user1.sql", "rw").getChannel()) {
+
+            writeChannel.write(scatterRead());
+//            writeChannel.force(true);
+
+
+        }
+    }
+
+    /**
+     * 分散读取 (scatter)
+     */
+
+    public static ByteBuffer[] scatterRead() throws IOException {
+
+        ByteBuffer[] buffers = new ByteBuffer[2];
+        //第一个作用是为彼此约定的读写大小
+        //加速操作文件一次的读写
+
+        try (FileChannel readChannel = new RandomAccessFile("C:\\Users\\Ness\\Desktop\\user.sql", "r").getChannel()) {
+
+            ByteBuffer buffer1 = ByteBuffer.allocate(44);
+            ByteBuffer buffer2 = ByteBuffer.allocate(46);
+
+            buffers[0] = buffer1;
+            buffers[1] = buffer2;
+
+
+            readChannel.read(buffers);
+
+
+            //切换读写的模式
+            buffer1.flip();
+            buffer2.flip();
+
+            System.out.println(new String(buffer1.array(), 0, buffer1.limit()));
+            System.out.println(new String(buffer2.array(), 0, buffer2.limit()));
+
+
+        }
+
+        return buffers;
 
 
     }
@@ -199,7 +286,7 @@ public class FileCopy {
 
 
             try {
-                //这里因为是直接内存 考虑利用反射进行关闭直接内存的资源流  还可以反射  Cleaner
+                //这里因为是直接内存 考虑利用反射进行关闭直接内存的资源流 FileChannelImpl  还可以反射  Cleaner
                 Method m = FileChannelImpl.class.getDeclaredMethod("unmap",
                         MappedByteBuffer.class);
                 m.setAccessible(true);
