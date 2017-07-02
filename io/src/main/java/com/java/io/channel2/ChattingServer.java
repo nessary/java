@@ -1,13 +1,12 @@
 package com.java.io.channel2;
 
 
+import io.netty.channel.nio.NioEventLoop;
+
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
-import java.nio.channels.SelectionKey;
-import java.nio.channels.Selector;
-import java.nio.channels.ServerSocketChannel;
-import java.nio.channels.SocketChannel;
+import java.nio.channels.*;
 import java.util.Iterator;
 
 /**
@@ -22,7 +21,13 @@ public class ChattingServer {
 
 
     public static void main(String[] args) throws IOException {
-        getServerByNoneBlocking();
+
+
+
+//        NioEventLoop
+
+       getServerByNoneBlocking();
+
 
     }
 
@@ -111,9 +116,18 @@ public class ChattingServer {
         socketChannel.register(selector, SelectionKey.OP_ACCEPT);
 
 
-        int len = 0;
+//        int len = 0;
 
-        while ((len = selector.select()) > 0) {
+//        while ((len = selector.select()) > 0) {
+
+        //修改
+        while (true){
+
+
+            selector.select();
+
+
+
 
 
             SelectionKey selectionKey;
@@ -127,11 +141,15 @@ public class ChattingServer {
 
                 }
 
+
+
                 if (selectionKey.isAcceptable()) {
 
 //                    SocketChannel channel = socketChannel.accept();
 
                     SocketChannel channel = ((ServerSocketChannel) selectionKey.channel()).accept();
+
+
 
                     channel.configureBlocking(false);
 

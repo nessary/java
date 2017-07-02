@@ -44,7 +44,9 @@ AIO(NIO2)---异步IO非阻塞  Paths  Files  ----open(Path(URI),StanOPeration.RE
 								   
 								   NIO---open()--------文件已经被复制 交给内存映射文件(c)--java不可控的---
 								          get  put
-								   
+
+
+
 								  
 								  
 								  

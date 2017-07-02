@@ -5,9 +5,11 @@ import io.netty.channel.Channel;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.SimpleChannelInboundHandler;
+import io.netty.channel.nio.NioEventLoop;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import sun.nio.ch.SelectorProviderImpl;
 
 /**
  * Created by Ness on 2017/7/1.
@@ -34,6 +36,9 @@ public class Test{
 //        DefaultFileRegion s
 
 
+        //进行
+//        NioEventLoop
+
         NioEventLoopGroup group = new NioEventLoopGroup(1);
         NioEventLoopGroup work = new NioEventLoopGroup(2);
         ServerBootstrap bootstrap = new ServerBootstrap();
@@ -44,6 +49,12 @@ public class Test{
                 //
             }
         });
+        //XxxByteButter
+
+
+
+//        SelectorProviderImpl
+
 
 
         Channel channel =
