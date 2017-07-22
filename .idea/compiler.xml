@@ -4,6 +4,8 @@
     <bytecodeTargetLevel>
       <module name="io_main" target="1.8" />
       <module name="io_test" target="1.8" />
+      <module name="lock_main" target="1.8" />
+      <module name="lock_test" target="1.8" />
       <module name="teach_main" target="1.8" />
       <module name="teach_test" target="1.8" />
     </bytecodeTargetLevel>

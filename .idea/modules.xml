@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/io.iml" filepath="$PROJECT_DIR$/.idea/modules/io.iml" group="io" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/io/io.iml" filepath="$PROJECT_DIR$/.idea/modules/io/io.iml" group="io" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/io/io_main.iml" filepath="$PROJECT_DIR$/.idea/modules/io/io_main.iml" group="io" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/io/io_test.iml" filepath="$PROJECT_DIR$/.idea/modules/io/io_test.iml" group="io" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lock/lock.iml" filepath="$PROJECT_DIR$/.idea/modules/lock/lock.iml" group="lock" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lock/lock_main.iml" filepath="$PROJECT_DIR$/.idea/modules/lock/lock_main.iml" group="lock" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lock/lock_test.iml" filepath="$PROJECT_DIR$/.idea/modules/lock/lock_test.iml" group="lock" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/teach.iml" filepath="$PROJECT_DIR$/.idea/modules/teach.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/teach_main.iml" filepath="$PROJECT_DIR$/.idea/modules/teach_main.iml" group="teach" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/teach_test.iml" filepath="$PROJECT_DIR$/.idea/modules/teach_test.iml" group="teach" />
