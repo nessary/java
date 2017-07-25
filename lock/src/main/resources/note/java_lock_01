@@ -1,0 +1,24 @@
+
+
+---原子性  要么做 要么不做
+   内置锁(synchronized)和显示锁(lock)  --synchronized(mollect 和monitor) -->jvm层
+                                       --lock (代码块)--->代码层
+
+                                       eg：     synchronized(this){
+                                                     //执行的动作
+                                                     }
+
+     8个基本类型 (int ,,4个字节)-->jvm层使用一个占位符    double/long -->两个占位符实现 (64位系统 实现了原子性)
+                              --volatile （32位系统上使用这个保证 double和long的有序性）
+
+
+----有序性
+
+
+--可见性            synchronized 和lock 是间接的保证了可见性   volatile---实现的形式主要是 两个 禁止 指令重排序和内存栅栏
+
+
+
+
+
+
