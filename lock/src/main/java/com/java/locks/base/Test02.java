@@ -1,14 +1,15 @@
 package com.java.locks.base;
 
-import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class Test02 {
+public class Test02 extends Object {
 
 
-    public static void main(String[] args) {
+
+
+    public  static void main(String[] args) {
 
         //happens-before(先天发生)
         //-------------------------------------------------------------
@@ -32,6 +33,8 @@ public class Test02 {
             //do something
 
         } catch (Exception e) {
+
+
 
         } finally {
 
@@ -63,8 +66,8 @@ public class Test02 {
         });
 
         thread.start();
-
         thread.interrupt();
+        thread.setPriority(Thread.MAX_PRIORITY);
 
 
         //4 线程 start 发生在 任何操作之前
@@ -85,6 +88,11 @@ public class Test02 {
             @Override
             public void run() {
                 System.out.println("222");
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+
+                }
             }
         });
 
@@ -130,8 +138,8 @@ public class Test02 {
 
         thread3.start();
 
-        thread3.interrupt();//中断
-
+//        thread3.interrupt();//中断
+        thread3.setDaemon(Boolean.TRUE);
 
         //4 线程  终止前所有操作全部结束
         //-------------------------------------------------------------
