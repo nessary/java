@@ -1,0 +1,16 @@
+--- synchronized 的 基本原理(monitorenter和monitorexit)
+  使用 对象锁 ---锁的可重入性和不可重入
+    --(递归----)---||
+                 -- private int  check(int x){
+                    if(x<10){
+                      check(x-1)
+                    }else{
+                       return x
+                    }
+                     //递归和迭代区别
+                     //尾递归的解决方式
+                  }
+              ---java 8 使用Xss --栈的大小 1m(1024K)
+     --作用是为了 防止死锁-增加锁的利用次数
+
+
