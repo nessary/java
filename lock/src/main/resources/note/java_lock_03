@@ -7,10 +7,31 @@
                     }else{
                        return x
                     }
-                     //递归和迭代区别
+                     //递归和迭代区别  //
+
+                            递归==>利用函数的层次性 --使用的栈内存 ,stackOverException
+                            迭代==> for-each/iterator 利用循环 解决问题 使用堆内存 (堆内存>>> 栈内存)
+
                      //尾递归的解决方式
-                  }
+                      伪代码 ：-->
+                    private int  check(int x){
+                                  //do something
+                              return   check(x-1) //平台限制 java没有对该 参数进行优化(在编译器 自动转换成迭代)
+
+                        }
+
+
               ---java 8 使用Xss --栈的大小 1m(1024K)
      --作用是为了 防止死锁-增加锁的利用次数
+
+
+
+   ---锁的时候如果是字符串 特别注意
+      1. String  abc="abc" //jdk7 放在常量池 中，常量池放在方法区  jdk1.8 方法区移至堆内存
+      2. String abc =new String("abc") //始终 在堆内存
+      3. String abc ="abc".intern() //如果常量池 有 abc 则返回 abc不再创建 jdk8
+
+       锁的是引用类型(Integer)-->自带缓存池  128 //每次都是新的对象锁  127 第一次不是 后面都是相同的对象锁
+
 
 
