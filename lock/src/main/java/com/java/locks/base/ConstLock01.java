@@ -25,7 +25,7 @@ public class ConstLock01 {
 //                } catch (InterruptedException e) {
 //                    throw new RuntimeException(e);
 //                }
-                LockSupport.parkNanos(200);
+//                LockSupport.parkNanos(200);
 
             });
         }
@@ -35,14 +35,14 @@ public class ConstLock01 {
         for (int i = 0; i < 10; i++) {
 
             threads[i].start();
-            threads[i].interrupt();
+//            threads[i].interrupt();
 //            try {
 //
 //                //最主要是sleep方法没有释放锁，而wait方法释放了锁，使得其他线程可以使用同步控制块或者方法。
 //                Thread.sleep(1);
 //
 //
-////                LockSupport.parkNanos(1);
+                LockSupport.parkNanos(1);
 ////                this.wait();
 ////                this.notify();
 //

@@ -6,6 +6,8 @@ package com.java.locks.base;
 public class ConstLock {
 
 
+//    private Integer locks=140;
+
     public static void main(String[] args) {
         ConstLock lock = new ConstLock();
 
@@ -36,12 +38,19 @@ public class ConstLock {
 
 
     public void testConstat(String lock, int i) {
-        synchronized (ConstLock.class) {
+//        synchronized (ConstLock.class) {
+        System.out.println("I`m :=" + i + " into".intern());
+
+        synchronized (lock.intern()) {
+
+
+
+//        synchronized (locks) {
             System.out.println("i:=" + i);
 
 
         }
-
+        System.out.println("I`m :=" + i + " leave");
 
     }
 
