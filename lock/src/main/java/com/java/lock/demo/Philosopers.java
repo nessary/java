@@ -30,7 +30,10 @@ public class Philosopers implements Runnable {
      */
     private int pauseFactor;
 
-    public Philosopers(Chopstick left, Chopstick right, int id, int pauseFactor) {
+    public
+
+
+    Philosopers(Chopstick left, Chopstick right, int id, int pauseFactor) {
         this.left = left;
         this.right = right;
         this.id = id;

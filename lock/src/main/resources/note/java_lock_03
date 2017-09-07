@@ -16,7 +16,9 @@
                       伪代码 ：-->
                     private int  check(int x){
                                   //do something
-                              return   check(x-1) //平台限制 java没有对该 参数进行优化(在编译器 自动转换成迭代)
+                              return   check(x-1) //平台限制 java没有对该 参数进 行优化(在编译器 自动转换成迭代)
+
+
 
                         }
 
@@ -27,7 +29,7 @@
 
 
    ---锁的时候如果是字符串 特别注意
-      1. String  abc="abc" //jdk7 放在常量池 中，常量池放在方法区  jdk1.8 方法区移至堆内存
+      1. String  abc="abc" //jdk6 放在常量池 中，常量池放在方法区  jdk1.8 方法区移至堆内存
       2. String abc =new String("abc") //始终 在堆内存
       3. String abc ="abc".intern() //如果常量池 有 abc 则返回 abc不再创建 jdk8
 

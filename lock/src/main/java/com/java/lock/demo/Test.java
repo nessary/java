@@ -3,6 +3,7 @@ package com.java.lock.demo;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.locks.ReadWriteLock;
 
 /**
  * Created by Ness on 2017/7/5.
@@ -27,14 +28,13 @@ public class Test {
 
                 Executors.newCachedThreadPool();
 
-
+        
         for (int i = 0; i < size; i++) {
-//            executorService.execute(new Philosopers(chopsticks[i], chopsticks[i % size], i, passFactor));
-            if(i<(size-1)){
-                executorService.execute(new Philosopers(chopsticks[i],chopsticks[(i+1) % size],i,passFactor));
-            }
-            else{
-                executorService.execute(new Philosopers(chopsticks[(i+1) % size],chopsticks[i],i,passFactor));
+//            executorService.execute(new Philosopers(chopsticks[i], chopsticks[(i + 1) % size], i, passFactor));
+            if (i < (size - 1)) {
+                executorService.execute(new Philosopers(chopsticks[(i + 1) % size], chopsticks[i], i, passFactor));
+            } else {
+                executorService.execute(new Philosopers(chopsticks[i], chopsticks[(i + 1) % size], i, passFactor));
             }
 
 //            if(i<(size-1))
@@ -45,7 +45,6 @@ public class Test {
         }
 
         executorService.shutdown();
-
 
 
     }
